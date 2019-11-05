@@ -1,0 +1,13 @@
+apiVersion: porter.technosophos.com/v1
+kind: Release
+metadata:
+  # This will be used as the name of the install
+  name: hello-install
+spec:
+  # action is one of install, upgrade, delete, or a custom action
+  action: install
+  # the bundle to be pulled from an OCI repository
+  bundle: deislabs/porter-hello-bundle:latest
+  # the VALUES to be supplied to parameters defined on the bundle
+  parameters: {}
+  credentials: {}

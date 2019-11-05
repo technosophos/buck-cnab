@@ -1,5 +1,5 @@
 crd:
-  group: porter.technosophos.com # Set this to your domain
+  group: cnab.technosophos.com # Set this to your domain
   version: v1 # v1, v1alpha1, etc
   kind: Release # This should be capitalized. It will be lowercased where necessary.
   plural: releases # Case does not matter here

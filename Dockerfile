@@ -14,7 +14,7 @@ RUN apk add bash \
     mv linux-amd64/helm /usr/local/bin && \
     rm helm.tgz && \
     helm init --client-only && \
-    mkdir -p /workshop 
+    mkdir -p /porter 
 
 ENV PATH="$PATH:/root/.porter"
 
