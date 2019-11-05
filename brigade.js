@@ -22,8 +22,13 @@ function handle(e, p) {
     }
 
     let porter = new Job("porter-run", "technosophos/porter:latest");
-    porter.tasks = [cmd];
+    porter.tasks = [
+        "dockerd-entrypoint.sh &",
+        "sleep 20",
+        cmd
+    ];
     porter.privileged = true;
+    porter.timeout = 1800000; // Assume some bundles will take a long time
     porter.docker = { enabled: true };
 
     return porter.run();
