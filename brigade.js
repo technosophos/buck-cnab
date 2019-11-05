@@ -13,7 +13,7 @@ function handle(e, p) {
     let cmd = "porter version";
     switch (e.type) {
         case "resource_added":
-            cmd = `porter ${o.spec.action} ${o.metadata.name} --tag ${o.spec.bundle}`
+            cmd = `porter install ${o.metadata.name} --tag ${o.spec.bundle}`
             break;
         case "resource_modified":
         case "resource_deleted":
