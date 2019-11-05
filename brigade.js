@@ -21,8 +21,10 @@ function handle(e, p) {
             cmd = `porter invoke --action ${o.spec.action} ${o.metadata.name} --tag ${o.spec.bundle}`
     }
 
-    let jorb = new Job("porter-run", "technosophos/porter:latest");
-    jorb.tasks = [cmd]
+    let porter = new Job("porter-run", "technosophos/porter:latest");
+    porter.tasks = [cmd];
+    porter.privileged = true;
+    porter.docker = { enabled: true };
 
-    return jorb.run();
+    return porter.run();
 }
