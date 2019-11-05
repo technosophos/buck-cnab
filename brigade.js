@@ -7,7 +7,7 @@ events.on("resource_error", handle);
 
 function handle(e, p) {
 
-    console.log("buck-porter is running")
+    console.log("buck-porter for ${e.name}")
     let o = JSON.parse(e.payload);
     console.log(obj);
 
