@@ -6,19 +6,22 @@ events.on("resource_deleted", handle);
 events.on("resource_error", handle);
 
 function handle(e, p) {
-    console.log("buck-porter for ${e.name}")
+    console.log(`buck-porter for ${e.type}`)
     let o = JSON.parse(e.payload);
     console.log(o);
 
     let cmd = "porter version";
-    switch (o.spec.action) {
-        case "install":
-        case "upgrade":
-        case "uninstall":
+    switch (e.type) {
+        case "resource_added":
             cmd = `porter ${o.spec.action} ${o.metadata.name} --tag ${o.spec.bundle}`
             break;
+        case "resource_modified":
+        case "resource_deleted":
+            console.log(`action ${e.type} is not currently supported`);
+            break;
         default:
-            cmd = `porter invoke --action ${o.spec.action} ${o.metadata.name} --tag ${o.spec.bundle}`
+            console.log("no error handler registered");
+            break;
     }
 
     let porter = new Job("porter-run", "technosophos/porter:latest");
