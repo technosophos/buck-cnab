@@ -6,10 +6,9 @@ events.on("resource_deleted", handle);
 events.on("resource_error", handle);
 
 function handle(e, p) {
-
     console.log("buck-porter for ${e.name}")
     let o = JSON.parse(e.payload);
-    console.log(obj);
+    console.log(o);
 
     let cmd = "porter version";
     switch (o.spec.action) {
