@@ -34,6 +34,14 @@ function handle(e, p) {
     ];
     porter.privileged = true;
     porter.timeout = 1800000; // Assume some bundles will take a long time
+    porter.cache = {
+        enabled: true,
+        size: "20Mi",
+        path: "/porter-home"
+    }
+    porter.env = {
+        "PORTER_HOME": "/porter-home"
+    }
 
     return porter.run();
 }
