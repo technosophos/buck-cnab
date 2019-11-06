@@ -5,9 +5,9 @@ metadata:
   name: hello-install
 spec:
   # the bundle to be pulled from an OCI repository
-  bundle: deislabs/porter-hello-bundle:latest
+  bundle: technosophos/porter-cowsay-installer:0.1.0
   # the VALUES to be supplied to parameters defined on the bundle
   parameters:
-    - name: foo
-      value: bar
+    - name: message
+      value: Moooo
   credentials: {}
