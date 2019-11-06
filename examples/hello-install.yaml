@@ -7,5 +7,7 @@ spec:
   # the bundle to be pulled from an OCI repository
   bundle: deislabs/porter-hello-bundle:latest
   # the VALUES to be supplied to parameters defined on the bundle
-  parameters: {}
+  parameters:
+    - name: foo
+      value: bar
   credentials: {}
