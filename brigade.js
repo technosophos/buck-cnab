@@ -30,6 +30,7 @@ function handle(e, p) {
     porter.tasks = [
         "dockerd-entrypoint.sh &",
         "sleep 20",
+        "mkdir -p /porter-home/porter",
         cmd
     ];
     porter.privileged = true;
