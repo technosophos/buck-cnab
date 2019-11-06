@@ -16,8 +16,10 @@ function handle(e, p) {
             cmd = `porter install ${o.metadata.name} --tag ${o.spec.bundle}`
             break;
         case "resource_modified":
-        case "resource_deleted":
             console.log(`action ${e.type} is not currently supported`);
+            break;
+        case "resource_deleted":
+            cmd = `porter uninstall ${o.metadata.name} --tag ${o.spec.bundle}`
             break;
         default:
             console.log("no error handler registered");
@@ -32,7 +34,6 @@ function handle(e, p) {
     ];
     porter.privileged = true;
     porter.timeout = 1800000; // Assume some bundles will take a long time
-    //porter.docker.enabled = true;
 
     return porter.run();
 }
