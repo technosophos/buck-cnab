@@ -32,7 +32,7 @@ function handle(e, p) {
     ];
     porter.privileged = true;
     porter.timeout = 1800000; // Assume some bundles will take a long time
-    porter.docker.enabled = true;
+    //porter.docker.enabled = true;
 
     return porter.run();
 }
