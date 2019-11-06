@@ -30,7 +30,6 @@ function handle(e, p) {
     porter.tasks = [
         "dockerd-entrypoint.sh &",
         "sleep 20",
-        "mkdir -p /porter-home/porter",
         cmd
     ];
     porter.privileged = true;
@@ -38,10 +37,7 @@ function handle(e, p) {
     porter.cache = {
         enabled: true,
         size: "20Mi",
-        path: "/porter-home"
-    }
-    porter.env = {
-        "PORTER_HOME": "/porter-home"
+        path: "/root/.porter/claims"
     }
 
     return porter.run();
