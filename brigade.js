@@ -11,7 +11,7 @@ function handle(e, p) {
     console.log(o);
 
     let args = [];
-    for (var pair in o.spec.params) {
+    for (var pair in o.spec.parameters) {
         args.push(`--param ${pair.name}=${pair.value}`);
     }
 
