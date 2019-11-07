@@ -1,4 +1,4 @@
-apiVersion: porter.technosophos.com/v1
+apiVersion: cnab.technosophos.com/v1
 kind: Release
 metadata:
   # This will be used as the name of the install

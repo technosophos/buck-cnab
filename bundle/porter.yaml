@@ -18,12 +18,12 @@ install:
   - cowsay:
       description: "Say stuff with a cow"
       message:
-        - "{{ bundle.parameters.message }}"
+        - "{{ bundle.parameters.install_message }}"
 uninstall:
   - cowsay:
       description: "Parting is such sweet sorrow"
       message:
-        - "{{ bundle.parameters.message }}"
+        - "{{ bundle.parameters.uninstall_message }}"
 upgrade:
   - cowsay:
       description: "Make it better!"
