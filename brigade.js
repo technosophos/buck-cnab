@@ -12,8 +12,15 @@ function handle(e, p) {
 
     let args = [];
     o.spec.parameters.forEach(pair => {
-        args.push(`--param ${pair.name}=${pair.value}`);
+        args.push(`--param ${pair.name}="${pair.value}"`);
     });
+
+    let creds = [];
+    o.spec.credentials.forEach(cred => {
+        creds.push({ name: cred.name, source: { value: cred.value } })
+    });
+    let credentials = JSON.stringify({ credentials: creds });
+    console.log(credentials);
 
     let action = "version";
     switch (e.type) {
