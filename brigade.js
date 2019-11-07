@@ -10,10 +10,15 @@ function handle(e, p) {
     let o = JSON.parse(e.payload);
     console.log(o);
 
+    let args = [];
+    for (var pair in o.spec.params) {
+        args.push(`--param ${pair.name}=${pair.value}`);
+    }
+
     let cmd = "porter version";
     switch (e.type) {
         case "resource_added":
-            cmd = `porter install ${o.metadata.name} --tag ${o.spec.bundle}`
+            cmd = `porter install ${o.metadata.name} --tag ${o.spec.bundle} ${args.join(" ")}`
             break;
         case "resource_modified":
             console.log(`action ${e.type} is not currently supported`);

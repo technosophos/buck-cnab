@@ -57,4 +57,17 @@ $ kubectl create -f examples/hello-install.yaml
 
 A second or two after this is created, we should be able to see the Brigade build kick off with `brig build list` or with Kashti.
 
-```
+## More Information
+
+- The `brigade.js` file is the Kubernetes controller
+- The `Dockerfile` in this directory builds a Porter docker image
+- The `values.yaml` file is the default set of values to pass to `helm install`. Feel free to edit
+- The `bundle/` directory has the tools necessary to build a nice Cowsay bundle from the Cowsay mixin
+- The `examples/` directory has examples the `Release` custom resource
+
+Other places you will want to go:
+
+- [Brigade](https://brigade.sh)
+- The [BUCK](https://github.com/brigadecore/buck) Brigade gateway
+- [Porter](https://porter.sh)
+- The [Porter Cowsay mixin](https://github.com/deislabs/porter-cowsay)

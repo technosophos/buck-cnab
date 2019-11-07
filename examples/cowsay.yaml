@@ -2,10 +2,10 @@ apiVersion: porter.technosophos.com/v1
 kind: Release
 metadata:
   # This will be used as the name of the install
-  name: hello-install
+  name: cowsay
 spec:
   # the bundle to be pulled from an OCI repository
-  bundle: technosophos/porter-cowsay-installer:0.1.0
+  bundle: technosophos/porter-cowsay:latest
   # the VALUES to be supplied to parameters defined on the bundle
   parameters:
     - name: message
