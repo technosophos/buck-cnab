@@ -20,7 +20,7 @@ function handle(e, p) {
         creds.push({ name: cred.name, source: { value: cred.value } })
     });
     let credentials = JSON.stringify({ credentials: creds });
-    console.log(credentials);
+    console.log(`Credentials: ${credentials}`);
 
     let action = "version";
     switch (e.type) {
