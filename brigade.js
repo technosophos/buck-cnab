@@ -31,7 +31,7 @@ function handle(e, p) {
             return;
     }
 
-    let cmd = `porter ${action} ${o.metadata.name} --tag ${o.spec.bundle} ${args.join(" ")}`
+    let cmd = `porter ${action} ${o.metadata.name} --tag ${o.spec.bundle} --force ${args.join(" ")}`
     let porter = new Job("porter-run", "technosophos/porter:latest");
     porter.tasks = [
         "dockerd-entrypoint.sh &",
