@@ -47,7 +47,7 @@ function handle(e, p) {
         path: "/root/.porter/claims"
     }
 
-    porter.storage.enabled = true;
+    //porter.storage.enabled = true;
 
     return porter.run();
 }
