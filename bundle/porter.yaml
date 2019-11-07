@@ -6,16 +6,24 @@ tag: technosophos/porter-cowsay:latest
 mixins:
   - cowsay
 
+parameters:
+  - name: install_message
+    type: string
+    default: "I <3 CNAB"
+  - name: uninstall_message
+    type: string
+    default: "Goodbye"
+
 install:
   - cowsay:
       description: "Say stuff with a cow"
       message:
-        - "I <3 CNAB"
+        - "{{ bundle.parameters.message }}"
 uninstall:
   - cowsay:
       description: "Parting is such sweet sorrow"
       message:
-        - Goodbye friend.
+        - "{{ bundle.parameters.message }}"
 upgrade:
   - cowsay:
       description: "Make it better!"
