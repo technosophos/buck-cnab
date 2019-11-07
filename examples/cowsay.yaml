@@ -12,4 +12,6 @@ spec:
       value: Moooo
     - name: uninstall_message
       value: Baaaah
-  credentials: {}
+  credentials:
+    - name: bogo_token
+      value: bogo_value

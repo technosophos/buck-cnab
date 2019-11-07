@@ -38,12 +38,13 @@ function handle(e, p) {
             return;
     }
 
-    let cmd = `porter ${action} ${o.metadata.name} --tag ${o.spec.bundle} --force ${args.join(" ")}`
+    let cmd = `porter ${action} ${o.metadata.name} --tag ${o.spec.bundle} --force ${args.join(" ")} -c buck`;
     let porter = new Job("porter-run", "technosophos/porter:latest");
     porter.tasks = [
         "dockerd-entrypoint.sh &",
         "sleep 20",
-        `echo ${cmd}`,
+        "echo $CREDENTIALSET > /root/porter/credentials/buck.yaml"
+            `echo ${cmd}`,
         cmd
     ];
     porter.privileged = true;
@@ -52,7 +53,10 @@ function handle(e, p) {
         enabled: true,
         size: "20Mi",
         path: "/root/.porter/claims"
-    }
+    };
+    porter.env = {
+        CREDENTIALSET: credentials
+    };
 
     //porter.storage.enabled = true;
 
