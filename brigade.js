@@ -11,9 +11,9 @@ function handle(e, p) {
     console.log(o);
 
     let args = [];
-    for (var pair in o.spec.parameters) {
+    o.spec.parameters.forEach(pair => {
         args.push(`--param ${pair.name}=${pair.value}`);
-    }
+    });
 
     let action = "version";
     switch (e.type) {
@@ -36,6 +36,7 @@ function handle(e, p) {
     porter.tasks = [
         "dockerd-entrypoint.sh &",
         "sleep 20",
+        `echo ${cmd}`,
         cmd
     ];
     porter.privileged = true;
