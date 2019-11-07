@@ -15,22 +15,23 @@ function handle(e, p) {
         args.push(`--param ${pair.name}=${pair.value}`);
     }
 
-    let cmd = "porter version";
+    let action = "version";
     switch (e.type) {
         case "resource_added":
-            cmd = `porter install ${o.metadata.name} --tag ${o.spec.bundle} ${args.join(" ")}`
+            action = "install";
             break;
         case "resource_modified":
-            console.log(`action ${e.type} is not currently supported`);
+            action = "upgrade";
             break;
         case "resource_deleted":
-            cmd = `porter uninstall ${o.metadata.name} --tag ${o.spec.bundle}`
+            action = "uninstall";
             break;
         default:
             console.log("no error handler registered");
-            break;
+            return;
     }
 
+    let cmd = `porter ${action} ${o.metadata.name} --tag ${o.spec.bundle} ${args.join(" ")}`
     let porter = new Job("porter-run", "technosophos/porter:latest");
     porter.tasks = [
         "dockerd-entrypoint.sh &",
