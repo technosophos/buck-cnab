@@ -43,8 +43,8 @@ function handle(e, p) {
     porter.tasks = [
         "dockerd-entrypoint.sh &",
         "sleep 20",
-        "echo $CREDENTIALSET > /root/porter/credentials/buck.yaml"
-            `echo ${cmd}`,
+        "echo $CREDENTIALSET > /root/porter/credentials/buck.yaml",
+        `echo ${cmd}`,
         cmd
     ];
     porter.privileged = true;
