@@ -59,7 +59,5 @@ function handle(e, p) {
         CREDENTIALSET: credentials
     };
 
-    //porter.storage.enabled = true;
-
     return porter.run();
 }

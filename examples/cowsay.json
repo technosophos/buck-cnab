@@ -1,0 +1,26 @@
+{
+    "apiVersion": "cnab.technosophos.com/v1",
+    "kind": "Release",
+    "metadata": {
+        "name": "cowsay"
+    },
+    "spec": {
+        "bundle": "technosophos/porter-cowsay:latest",
+        "parameters": [
+            {
+                "name": "install_message",
+                "value": "Moooo"
+            },
+            {
+                "name": "uninstall_message",
+                "value": "Baaaah"
+            }
+        ],
+        "credentials": [
+            {
+                "name": "bogo_token",
+                "value": "bogo_value"
+            }
+        ]
+    }
+}
