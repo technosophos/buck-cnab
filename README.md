@@ -15,6 +15,8 @@ Set `export BUCK=/path/to/buck` for convenience.
 
 ### Step 1: Add a Buck project
 
+Note that because we want to use the Docker socket for Porter, we need to choose `Configure advanced options`. In that section, we'll accept the defaults for everything but the question `Allow privileged jobs`, which we set to `true`.
+
 ```console
 $ brig project create
 ? VCS or no-VCS project? VCS
@@ -25,9 +27,31 @@ $ brig project create
 ? Where should the project's shared secret come from? Auto-generate one now
 Auto-generated a Shared Secret: "XXXXXXXXXXXXXXXXX"
 ? Configure GitHub Access? No
-? Configure advanced options No
+? Configure advanced options Yes
+? Build storage size
+? SecretKeyRef usage No
+? Project Service Account
+? Build storage class nfs
+? Job cache storage class nfs
+? Custom VCS sidecar (enter 'NONE' for no sidecar) [? for help] (brigadecore/git? Custom VCS sidecar (enter 'NONE' for no sidecar) brigadecore/git-sidecar:latest
+? Worker image registry or DockerHub org
+? Worker image name
+? Custom worker image tag
+? Worker image pull policy  [Use arrows to move, type to filter, ? for more help? Worker image pull policy IfNotPresent
+? Worker command
+? Allow host mounts No
+? Allow privileged jobs Yes      <---- SET THIS ONE TO YES
+? Image pull secrets
+? Initialize Git submodules No
+? brigade.js file path relative to the repository root
+? Default script ConfigMap name
+? Upload a default brigade.js script
+? Secret for the Generic Gateway (alphanumeric characters only). Press Enter if...
+? Secret for the Generic Gateway (alphanumeric characters only). Press Enter if...
 Project ID: brigade-XXXXXXXXX
 ```
+
+> NOTE: In the above example, we also set the default storage class to `nfs`. If you are working on a system with NFS, this option is faster than using the default storage class.
 
 Take note of your newly generated project ID: `Project ID: brigade-XXXXXXXXX`. You will use that in the next step.
 
@@ -98,7 +122,27 @@ $ brig project create
 ? Where should the project's shared secret come from? Auto-generate one now
 Auto-generated a Shared Secret: "XXXXXXXXXXXXXXXXX"
 ? Configure GitHub Access? No
-? Configure advanced options No
+? Configure advanced options Yes
+? Build storage size
+? SecretKeyRef usage No
+? Project Service Account
+? Build storage class nfs
+? Job cache storage class nfs
+? Custom VCS sidecar (enter 'NONE' for no sidecar) [? for help] (brigadecore/git? Custom VCS sidecar (enter 'NONE' for no sidecar) brigadecore/git-sidecar:latest
+? Worker image registry or DockerHub org
+? Worker image name
+? Custom worker image tag
+? Worker image pull policy  [Use arrows to move, type to filter, ? for more help? Worker image pull policy IfNotPresent
+? Worker command
+? Allow host mounts No
+? Allow privileged jobs Yes      <---- SET THIS ONE TO YES
+? Image pull secrets
+? Initialize Git submodules No
+? brigade.js file path relative to the repository root
+? Default script ConfigMap name
+? Upload a default brigade.js script
+? Secret for the Generic Gateway (alphanumeric characters only). Press Enter if...
+? Secret for the Generic Gateway (alphanumeric characters only). Press Enter if...
 Project ID: brigade-XXXXXXXXX
 $ export PROJECT=brigade-XXXXXXXXX
 ```
