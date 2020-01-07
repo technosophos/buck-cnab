@@ -17,7 +17,7 @@ Set `export BUCK=/path/to/buck` for convenience.
 
 Note that because we want to use the Docker socket for Porter, we need to choose `Configure advanced options`. In that section, we'll accept the defaults for everything but the question `Allow privileged jobs`, which we set to `true`. We'll also set `build storage class` and `cache storage class` to `nfs`, as it's the default ReadWriteMany storage class for using Brigade.
 
-```consolepr
+```console
 $ brig project create
 ? VCS or no-VCS project? VCS
 ? Project Name technosophos/buck-cnab
