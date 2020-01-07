@@ -15,7 +15,7 @@ Set `export BUCK=/path/to/buck` for convenience.
 
 ### Step 1: Add a Buck project
 
-Note that because we want to use the Docker socket for Porter, we need to choose `Configure advanced options`. In that section, we'll accept the defaults for everything but the question `Allow privileged jobs`, which we set to `true`.
+Note that because we want to use the Docker socket for Porter, we need to choose `Configure advanced options`. In that section, we'll accept the defaults for everything but the question `Allow privileged jobs`, which we set to `true`. We'll also set `build storage class` and `cache storage class` to `nfs`, as it's the default ReadWriteMany storage class for using Brigade.
 
 ```console
 $ brig project create
@@ -31,8 +31,8 @@ Auto-generated a Shared Secret: "XXXXXXXXXXXXXXXXX"
 ? Build storage size
 ? SecretKeyRef usage No
 ? Project Service Account
-? Build storage class nfs
-? Job cache storage class nfs
+? Build storage class nfs  <---- SET THIS ONE TO "nfs"
+? Job cache storage class nfs   <---- SET THIS ONE TO "nfs"
 ? Custom VCS sidecar (enter 'NONE' for no sidecar) [? for help] (brigadecore/git? Custom VCS sidecar (enter 'NONE' for no sidecar) brigadecore/git-sidecar:latest
 ? Worker image registry or DockerHub org
 ? Worker image name
@@ -126,8 +126,8 @@ Auto-generated a Shared Secret: "XXXXXXXXXXXXXXXXX"
 ? Build storage size
 ? SecretKeyRef usage No
 ? Project Service Account
-? Build storage class nfs
-? Job cache storage class nfs
+? Build storage class nfs <---- SET THIS ONE TO "nfs"
+? Job cache storage class nfs    <---- SET THIS ONE TO "nfs"
 ? Custom VCS sidecar (enter 'NONE' for no sidecar) [? for help] (brigadecore/git? Custom VCS sidecar (enter 'NONE' for no sidecar) brigadecore/git-sidecar:latest
 ? Worker image registry or DockerHub org
 ? Worker image name
